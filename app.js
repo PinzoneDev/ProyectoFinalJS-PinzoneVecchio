@@ -61,7 +61,7 @@ function convertirMoneda(from, to, monto) {
             const tasaCambio = data.rates[to];
             if (tasaCambio) {
                 const resultado = calcularConversion(monto, tasaCambio);
-                mostrarResultado(resultado, to);
+                mostrarAlertaResultado(resultado, to);
             } else {
                 throw new Error('No se encontró la tasa de cambio para la conversión.');
             }
@@ -76,9 +76,14 @@ function calcularConversion(monto, tasa) {
     return monto * tasa;
 }
 
-function mostrarResultado(resultado, to) {
-    const resultadoElement = document.getElementById("resultado");
-    resultadoElement.textContent = `El resultado es: ${resultado.toFixed(2)} ${to}`;
+function mostrarAlertaResultado(resultado, to) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Resultado de la Conversión',
+        text: `El resultado es: ${resultado.toFixed(2)} ${to}`,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
 }
 
 function mostrarError(mensaje) {
