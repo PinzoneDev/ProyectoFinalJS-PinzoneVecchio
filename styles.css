@@ -1,7 +1,6 @@
 body {
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
-    transform: scale(1.25);
 }
 
 .container-fluid {
@@ -13,17 +12,12 @@ h1 {
 }
 
 .btn-toggle {
-    height: 38px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
     border: none;
     background-color: #17a2b8;
     color: #fff;
     font-size: 24px;
-    padding: 0;
-    margin-top: 32px; 
 }
 
 .btn-toggle:hover {

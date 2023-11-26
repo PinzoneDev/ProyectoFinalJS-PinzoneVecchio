@@ -27,7 +27,7 @@ function obtenerDivisas() {
         })
         .catch(error => {
             console.error('Error al cargar las divisas:', error);
-            alert('Hubo un problema al cargar las divisas. Por favor, intenta de nuevo más tarde.');
+            mostrarError('Hubo un problema al cargar las divisas. Por favor, intenta de nuevo más tarde.');
         });
 }
 
@@ -47,7 +47,7 @@ document.getElementById("convertirBtn").addEventListener("click", function () {
     if (fromCurrency && toCurrency && !isNaN(monto)) {
         convertirMoneda(fromCurrency, toCurrency, monto);
     } else {
-        alert("Por favor, complete todos los campos con valores válidos.");
+        mostrarError("Por favor, complete todos los campos con valores válidos.");
     }
 });
 
@@ -68,7 +68,7 @@ function convertirMoneda(from, to, monto) {
         })
         .catch(error => {
             console.error('Error al realizar la conversión:', error);
-            alert('Hubo un problema al realizar la conversión. Por favor, intenta de nuevo más tarde.');
+            mostrarError('Hubo un problema al realizar la conversión. Por favor, intenta de nuevo más tarde.');
         });
 }
 
@@ -79,4 +79,14 @@ function calcularConversion(monto, tasa) {
 function mostrarResultado(resultado, to) {
     const resultadoElement = document.getElementById("resultado");
     resultadoElement.textContent = `El resultado es: ${resultado.toFixed(2)} ${to}`;
+}
+
+function mostrarError(mensaje) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+    });
 }
